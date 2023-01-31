@@ -1,0 +1,13 @@
+.Home {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.Sidebar_container {
+  flex: 0.15;
+}
+
+.Display_container {
+  flex: 0.85;
+}

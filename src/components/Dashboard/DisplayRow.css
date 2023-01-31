@@ -1,0 +1,15 @@
+.DisplayRow {
+  margin-top: 2rem;
+}
+
+.DisplayRow_Container {
+  display: flex;
+
+  /* overflow-x: auto; */
+  /* overflow-y: hidden; */
+  /* white-space: nowrap; */
+}
+
+.Item_Container {
+  background-color: aqua;
+}
