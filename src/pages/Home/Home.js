@@ -3,6 +3,7 @@ import "./Home.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import CreateTask from "../../components/CreateTask/CreateTask";
+import UserTask from "../../components/UserTasks/UserTask";
 
 function Home() {
   const [display, setDisplay] = useState(0);
@@ -12,7 +13,7 @@ function Home() {
       case 0:
         return <Dashboard />;
       case 1:
-        return "Your Tasks";
+        return <UserTask />;
       case 2:
         return <CreateTask />;
       default:

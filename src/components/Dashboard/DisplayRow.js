@@ -4,8 +4,8 @@ import { Card, Button } from "react-bootstrap";
 import React from "react";
 import { useStore } from "../../StoreProvider";
 import {
+  arrayRemove,
   arrayUnion,
-  collection,
   doc,
   updateDoc,
 } from "firebase/firestore/lite";
@@ -13,12 +13,21 @@ import { db } from "../../firebase";
 
 function DisplayRow({ data }) {
   const { auth } = useStore();
+  const uid = auth.user.uid;
+  const currentTask = auth.currentTask;
+
+  console.log(currentTask);
+  // console.log(data);
 
   const addTaskToUser = async (docId) => {
-    const uid = auth.user.uid;
-
     await updateDoc(doc(db, "users", "" + uid), {
       currentTasks: arrayUnion(docId),
+    });
+  };
+
+  const removeFromUser = async (docId) => {
+    await updateDoc(doc(db, "users", "" + uid), {
+      currentTasks: arrayRemove(docId),
     });
   };
 

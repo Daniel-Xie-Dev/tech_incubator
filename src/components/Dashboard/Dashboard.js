@@ -12,7 +12,6 @@ function Dashboard() {
     const getTasks = async () => {
       const querySnapshot = await getDocs(collection(db, "tasks"));
       setTasks(querySnapshot.docs);
-      console.log(querySnapshot.docs);
       querySnapshot.forEach((doc) => {
         console.log(querySnapshot.docs.length);
         // doc.data() is never undefined for query doc snapshots
@@ -26,13 +25,13 @@ function Dashboard() {
   return (
     <div className="Dashboard">
       {tasks?.map((_, index) => {
-        if (index % 2 === 0) {
+        if (index % 3 === 0) {
           return (
             <DisplayRow
               key={index}
               data={tasks.slice(
                 index,
-                index + 2 > tasks.length ? -1 : index + 2
+                index + 3 > tasks.length ? tasks.length : index + 3
               )}
             />
           );
