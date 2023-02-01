@@ -5,13 +5,7 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { useState } from "react";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-} from "firebase/firestore/lite";
+import { doc, getDoc, setDoc } from "firebase/firestore/lite";
 
 const useAuth = () => {
   const [user, setUser] = useState(null);

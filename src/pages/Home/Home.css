@@ -1,13 +1,13 @@
 .Home {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
 }
 
 .Sidebar_container {
-  flex: 0.15;
+  min-width: 10%;
 }
 
 .Display_container {
-  flex: 0.85;
+  max-width: 90%;
 }
