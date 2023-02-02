@@ -31,12 +31,6 @@ const useAuth = () => {
       completedTasks: [],
     });
 
-    // await addDoc(collection(db, "users"), {
-    //   id: userData.uid,
-    //   currentTasks: [],
-    //   completedTasks: [],
-    // });
-
     return true;
   };
 

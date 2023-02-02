@@ -2,21 +2,17 @@ import "./Dashboard.css";
 import React, { useEffect, useState } from "react";
 
 import DisplayRow from "./DisplayRow";
-import { collection, getDocs } from "firebase/firestore/lite";
-import { db } from "../../firebase";
+import useAPI from "../../hooks/useAPI";
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
 
+  const { getDocumentsByCollection } = useAPI();
+
   useEffect(() => {
     const getTasks = async () => {
-      const querySnapshot = await getDocs(collection(db, "tasks"));
-      setTasks(querySnapshot.docs);
-      querySnapshot.forEach((doc) => {
-        console.log(querySnapshot.docs.length);
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.id, " => ", doc.data());
-      });
+      const result = await getDocumentsByCollection("tasks");
+      setTasks(result);
     };
 
     getTasks();
@@ -29,10 +25,7 @@ function Dashboard() {
           return (
             <DisplayRow
               key={index}
-              data={tasks.slice(
-                index,
-                index + 4 > tasks.length ? tasks.length : index + 4
-              )}
+              data={tasks.slice(index, index + 4 > tasks.length ? tasks.length : index + 4)}
             />
           );
         }

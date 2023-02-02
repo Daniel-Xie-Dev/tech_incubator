@@ -1,14 +1,14 @@
 import React from "react";
 import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../StoreProvider";
+import useAPI from "../../hooks/useAPI";
 
 function Sidebar({ setDisplay }) {
-  const { auth } = useStore();
+  const { signout } = useAPI();
   const navigate = useNavigate();
 
-  const signout = async () => {
-    await auth.signout();
+  const handleSignOut = async () => {
+    await await signout();
     navigate("/");
   };
 
@@ -27,7 +27,7 @@ function Sidebar({ setDisplay }) {
           Create tasks
         </div>
 
-        <div className="sidebar_items" onClick={signout}>
+        <div className="sidebar_items" onClick={handleSignOut}>
           Sign Out
         </div>
       </div>

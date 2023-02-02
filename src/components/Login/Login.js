@@ -1,33 +1,39 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useAPI from "../../hooks/useAPI";
 import { useStore } from "../../StoreProvider";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { auth } = useStore();
-  // console.log(auth);
+  const { signin, signup } = useAPI();
+  const { setUser, setCurrentTask, setCompletedTask } = useStore();
+
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
     if (email.length !== 0 && password.length !== 0) {
-      const res = await auth.signin(email, password);
-      if (res) {
+      try {
+        const { userData, currentTaskTemp, completedTaskTemp } = await signin(email, password);
+        console.log(userData, currentTaskTemp, completedTaskTemp);
+        setUser(userData);
+        setCurrentTask(currentTaskTemp);
+        setCompletedTask(completedTaskTemp);
         navigate("/home");
+      } catch (error) {
+        console.log(error);
       }
-    } else {
-      return;
     }
-    // navigate("/home");
   };
 
   const handleSignup = async () => {
     if (email.length !== 0 && password.length !== 0) {
-      await auth.signup(email, password);
-      navigate("/home");
-    } else {
-      return;
+      try {
+        // navigate("/home");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
