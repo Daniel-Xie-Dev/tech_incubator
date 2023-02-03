@@ -1,4 +1,5 @@
 import {
+  addDoc,
   arrayRemove,
   arrayUnion,
   collection,
@@ -24,7 +25,15 @@ const useAPI = () => {
   const signup = async (email, password) => {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     const uid = result.user.uid;
-    await createDocumentInCollection("users", uid);
+
+    const dataObject = {
+      theme: "light",
+      company: "Personal",
+      currentTasks: [],
+      completedTasks: [],
+    };
+
+    await createDocumentWithNameInCollectionWithData("users", uid, dataObject);
   };
 
   const signout = async () => {
@@ -67,11 +76,16 @@ const useAPI = () => {
     return querySnapshot.docs;
   };
 
-  const createDocumentInCollection = async (collectionName, documentName) => {
-    await setDoc(doc(db, collectionName, documentName), {
-      currentTasks: [],
-      completedTasks: [],
-    });
+  const createDocumentWithNameInCollectionWithData = async (
+    collectionName,
+    documentName,
+    dataObject
+  ) => {
+    await setDoc(doc(db, collectionName, documentName), dataObject);
+  };
+
+  const createDocumentInCollectionWithData = async (collectionName, dataObject) => {
+    await addDoc(collection(db, collectionName), dataObject);
   };
 
   const getFieldById = async (collectionName, documentName, fieldName) => {
@@ -109,6 +123,7 @@ const useAPI = () => {
     queryDocuments,
     updateDocumentField,
     updateDocumentFieldArray,
+    createDocumentInCollectionWithData,
   };
 };
 

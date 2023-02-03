@@ -1,5 +1,6 @@
 .sidebar {
   height: 100vh;
+  background-color: white;
 }
 
 .sidebar_container {
@@ -11,9 +12,33 @@
 }
 
 .sidebar_items {
-  width: 65%;
+  width: 100%;
+  height: 10vh;
+  border: 0;
+  background-color: white;
+  /* background-color: blue; */
+  font-size: large;
+  text-align: left;
+  margin: 0;
+  cursor: pointer;
+  padding: 0;
+
+  /* text-indent: 15%; */
+  /* padding-bottom: 20px; */
 }
 
-.sidebar_container:hover {
+.sidebar_items:hover {
+  /* background-color: gray; */
+}
+
+.sidebar_image {
+  object-fit: contain;
+  width: 100%;
+  /* height: 100%; */
+  margin: 0;
+  padding: 0;
   cursor: pointer;
+}
+
+.sidebar_image:hover {
 }

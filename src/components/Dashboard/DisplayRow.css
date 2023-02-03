@@ -7,7 +7,8 @@
 .DisplayRow_Container {
   width: 100%;
   display: flex;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
   /* margin-left: 5; */
 
@@ -18,9 +19,10 @@
 
 .Item_Container {
   /* background-color: aqua; */
+  padding-left: 1vw;
   padding-right: 1vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
 }
 
 .Card_Container {

@@ -1,0 +1,40 @@
+.CreateTask {
+  height: 100%;
+  background-color: lightblue;
+}
+
+.CreateTask_Container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  padding-left: 2vw;
+
+  /* align-items: center; */
+}
+
+.CreateTask_Label {
+  font-size: x-large;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.CreateTask_Container > input {
+  font-size: x-large;
+}
+
+/* .CreateTask_Container > input:focus {
+  outline: none;
+} */
+.CreateTask_TextArea {
+  width: 100%;
+  height: 200px;
+  font-size: large;
+}
+
+.CreateTask_DueDate {
+  display: flex;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  justify-content: space-evenly;
+}

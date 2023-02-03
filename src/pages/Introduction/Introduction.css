@@ -1,0 +1,49 @@
+.Introduction {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("https://images2.alphacoders.com/667/667197.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* background-position: center; */
+
+  /* background-image: url("https://media.istockphoto.com/id/180520474/photo/drawing-businss-concept.jpg?s=612x612&w=0&k=20&c=EYXgnzRuR9-kWZgkMrXdrDWwq52uY6Ye0t1u2JotI3I="); */
+}
+
+.Introduction > h1 {
+  font-size: 5vw;
+  color: white;
+  margin: 0;
+}
+.Introduction > h3 {
+  font-size: 3vw;
+  color: white;
+}
+
+.Introduction_Container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.Introduction_Container > button {
+  width: 10vw;
+  height: 10vh;
+  font-size: 1vw;
+  background-color: white;
+}
+
+.Introduction_Container > button {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+}
+
+.Introduction_Container > button:hover {
+}

@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 import { useStore } from "../../StoreProvider";
+import { motion } from "framer-motion";
+import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
 
-  const { signin, signup } = useAPI();
+  const { signin } = useAPI();
   const { setUser, setCurrentTask, setCompletedTask } = useStore();
 
   const navigate = useNavigate();
@@ -27,37 +30,32 @@ function Login() {
     }
   };
 
-  const handleSignup = async () => {
-    if (email.length !== 0 && password.length !== 0) {
-      try {
-        // navigate("/home");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
   return (
     <div className="login">
       <div className="login_form_container">
-        <label className="login_labels">Email:</label>
+        {/* <img src="https://sccpss.com/PublishingImages/login1.png" /> */}
         <input
           type={"email"}
           className="login_input"
+          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        <label className="login_labels">Password:</label>
+
         <input
-          type={"password"}
+          type={showPass ? "text" : "password"}
           className="login_input"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        <button className="login" onClick={handleSubmit}>
+
+        <div className="password_checkbox">
+          <label>Show password?</label>
+          <input type={"checkbox"} onClick={() => setShowPass(!showPass)}></input>
+        </div>
+
+        <motion.button className="login_button" onClick={handleSubmit} whileHover={{ scale: 1.2 }}>
           Login
-        </button>
-        <button className="login" onClick={handleSignup}>
-          SignUp
-        </button>
+        </motion.button>
       </div>
     </div>
   );

@@ -2,10 +2,22 @@ import React from "react";
 import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
+import { delay, motion } from "framer-motion";
+
+import logo from "../../pictures/logo_transparent.png";
 
 function Sidebar({ setDisplay }) {
   const { signout } = useAPI();
   const navigate = useNavigate();
+
+  const buttons = [
+    "Dashboard",
+    "Unfinished Task",
+    "Completed Task",
+    "My Task",
+    "Create Task",
+    "Setting",
+  ];
 
   const handleSignOut = async () => {
     await await signout();
@@ -15,21 +27,36 @@ function Sidebar({ setDisplay }) {
   return (
     <div className="sidebar">
       <div className="sidebar_container">
-        <div className="sidebar_items">place logo here</div>
-        <div className="sidebar_items" onClick={() => setDisplay(0)}>
-          Dashboard
-        </div>
-        <div className="sidebar_items" onClick={() => setDisplay(1)}>
-          Your tasks
-        </div>
+        <motion.img className="sidebar_image" src={logo} alt="" onClick={() => setDisplay(0)} />
 
-        <div className="sidebar_items" onClick={() => setDisplay(2)}>
-          Create tasks
-        </div>
+        {buttons.map((item, index) => {
+          return (
+            <motion.button
+              key={item}
+              whileHover={{
+                backgroundColor: ["hsl(0, 100, 100)", "hsl(211, 12, 48)"],
+                borderRadius: "0px 0px 30px 0px",
+              }}
+              exit={{}}
+              // initial={{ backgroundColor: "white" }}
+              className="sidebar_items"
+              onClick={() => setDisplay(index)}
+            >
+              {item}
+            </motion.button>
+          );
+        })}
 
-        <div className="sidebar_items" onClick={handleSignOut}>
+        <motion.button
+          whileHover={{
+            backgroundColor: ["hsl(0, 100, 100)", "hsl(211, 12, 48)"],
+            borderRadius: "0px 0px 30px 0px",
+          }}
+          className="sidebar_items"
+          onClick={handleSignOut}
+        >
           Sign Out
-        </div>
+        </motion.button>
       </div>
     </div>
   );
