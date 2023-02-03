@@ -1,0 +1,11 @@
+.Item_Container {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.Item_Text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

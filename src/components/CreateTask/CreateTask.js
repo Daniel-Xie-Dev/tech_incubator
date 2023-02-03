@@ -15,7 +15,7 @@ function CreateTask() {
   // console.log(user);
   const { createDocumentInCollectionWithData } = useAPI();
 
-  const submitTask = async () => {
+  const createTask = async () => {
     const object = {
       title: title,
       company: null,
@@ -61,7 +61,7 @@ function CreateTask() {
           <input type={"time"} onChange={(e) => setTime(e.target.value)}></input>
         </div>
 
-        <button onClick={submitTask}>Submit Task</button>
+        <button onClick={createTask}>Create Task</button>
       </div>
     </div>
   );

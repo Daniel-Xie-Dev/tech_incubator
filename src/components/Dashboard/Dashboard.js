@@ -21,11 +21,11 @@ function Dashboard() {
   return (
     <div className="Dashboard">
       {tasks?.map((_, index) => {
-        if (index % 6 === 0) {
+        if (index % 5 === 0) {
           return (
             <DisplayRow
               key={index}
-              data={tasks.slice(index, index + 6 > tasks.length ? tasks.length : index + 6)}
+              data={tasks.slice(index, index + 5 > tasks.length ? tasks.length : index + 5)}
             />
           );
         }

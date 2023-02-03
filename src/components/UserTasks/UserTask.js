@@ -7,10 +7,9 @@ import DisplayRow from "../Dashboard/DisplayRow";
 import useAPI from "../../hooks/useAPI";
 
 function UserTask() {
-  const [currentObjects, setCurrentObjects] = useState([]);
-  const [completedObjects, setCompletedObjects] = useState([]);
+  const [userObjects, setUserObjects] = useState([]);
 
-  const { user, currentTask, completedTask } = useStore();
+  const { user } = useStore();
 
   // console.log(currentTask);
 
@@ -22,29 +21,23 @@ function UserTask() {
   }
 
   useEffect(() => {
-    const getCurrentTasks = async () => {
-      const filter = where("__name__", "in", currentTask.length === 0 ? ["temp"] : currentTask);
+    const getUserCreatedTask = async () => {
+      const filter = where("owner", "==", user.uid);
       const result = await queryDocuments("tasks", filter);
-      setCurrentObjects(result);
+      console.log(result);
+      setUserObjects(result);
     };
 
-    const getCompletedTasks = async () => {
-      const filter = where("__name__", "in", completedTask.length === 0 ? ["temp"] : completedTask);
-      const result = await queryDocuments("tasks", filter);
-      setCompletedObjects(result);
-    };
-
-    getCurrentTasks();
-    getCompletedTasks();
-    // getCompletedTasks();
-  }, [currentTask, completedTask]);
+    getUserCreatedTask();
+  }, []);
 
   return (
     <div className="UserTask">
-      <h1>Current Task</h1>
-      <DisplayRow data={currentObjects} />
-      <h1>Completed Task</h1>
-      <DisplayRow data={completedObjects} />
+      <h1>My Task</h1>
+
+      <DisplayRow data={userObjects} userObjects={userObjects} setUserObjects={setUserObjects} />
+      {/* <h1>Completed Task</h1>
+      <DisplayRow data={completedObjects} /> */}
     </div>
   );
 }

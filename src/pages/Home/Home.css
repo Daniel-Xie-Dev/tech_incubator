@@ -5,9 +5,11 @@
 }
 
 .Sidebar_container {
+  min-width: 10%;
   max-width: 10%;
 }
 
 .Display_container {
+  min-width: 90%;
   max-width: 90%;
 }

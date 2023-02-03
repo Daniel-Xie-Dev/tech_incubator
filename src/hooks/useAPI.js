@@ -3,6 +3,7 @@ import {
   arrayRemove,
   arrayUnion,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -114,6 +115,14 @@ const useAPI = () => {
     }
   };
 
+  const deleteDocumentFromCollection = async (collectionName, documentName) => {
+    try {
+      await deleteDoc(doc(db, collectionName, documentName));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     signin,
     signup,
@@ -124,6 +133,7 @@ const useAPI = () => {
     updateDocumentField,
     updateDocumentFieldArray,
     createDocumentInCollectionWithData,
+    deleteDocumentFromCollection,
   };
 };
 

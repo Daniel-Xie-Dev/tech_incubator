@@ -1,13 +1,13 @@
 .CreateTask {
   height: 100%;
   background-color: lightblue;
+  width: 100%;
 }
 
 .CreateTask_Container {
   display: flex;
   flex-direction: column;
   width: 50%;
-
   padding-left: 2vw;
 
   /* align-items: center; */

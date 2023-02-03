@@ -6,10 +6,14 @@
 
 .DisplayRow_Container {
   width: 100%;
+  height: 100%;
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  scrollbar-color: blue black;
+  scrollbar-width: thin;
+
   /* margin-left: 5; */
 
   /* overflow-x: auto; */
@@ -17,14 +21,14 @@
   /* white-space: nowrap; */
 }
 
-.Item_Container {
-  /* background-color: aqua; */
+/* .Item_Container {
+  background-color: aqua;
   padding-left: 1vw;
   padding-right: 1vw;
   padding-top: 2vh;
   padding-bottom: 2vh;
-}
+} */
 
-.Card_Container {
+/* .Card_Container {
   background-color: aqua;
-}
+} */
