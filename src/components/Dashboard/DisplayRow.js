@@ -5,7 +5,7 @@ import { useStore } from "../../StoreProvider";
 import useAPI from "../../hooks/useAPI";
 import Task from "../Task/Task";
 
-function DisplayRow({ data, userObjects, setUserObjects }) {
+function DisplayRow({ data, setUserObjects }) {
   const { user, currentTask, setCurrentTask } = useStore();
   const { updateDocumentFieldArray, deleteDocumentFromCollection } = useAPI();
   const uid = user.uid;
@@ -41,9 +41,9 @@ function DisplayRow({ data, userObjects, setUserObjects }) {
   };
 
   const deleteFromUser = async (docId) => {
-    let global = userObjects.map((item) => item.id);
+    let global = data.map((item) => item.id);
     let index = global.indexOf(docId);
-    global = [...userObjects];
+    global = [...data];
     global.splice(index, 1);
     setUserObjects(global);
     await deleteDocumentFromCollection("tasks", docId);

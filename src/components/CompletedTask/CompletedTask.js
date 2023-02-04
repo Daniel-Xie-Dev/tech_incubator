@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useStore } from "../../StoreProvider";
 import { where } from "firebase/firestore/lite";
 import { useNavigate } from "react-router-dom";
-import DisplayRow from "../Dashboard/DisplayRow";
 import useAPI from "../../hooks/useAPI";
+import Dashboard from "../Dashboard/Dashboard";
 
 function CompletedTask() {
   const [completedObjects, setCompletedObjects] = useState([]);
@@ -34,7 +34,7 @@ function CompletedTask() {
   return (
     <div className="CompletedTask">
       <h1>Completed Task</h1>
-      <DisplayRow data={completedObjects} />
+      <Dashboard tasks={completedObjects} />
     </div>
   );
 }

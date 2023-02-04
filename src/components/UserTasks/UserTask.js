@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useStore } from "../../StoreProvider";
 import { where } from "firebase/firestore/lite";
 import { useNavigate } from "react-router-dom";
-import DisplayRow from "../Dashboard/DisplayRow";
 import useAPI from "../../hooks/useAPI";
+import Dashboard from "../Dashboard/Dashboard";
 
 function UserTask() {
   const [userObjects, setUserObjects] = useState([]);
@@ -24,7 +24,6 @@ function UserTask() {
     const getUserCreatedTask = async () => {
       const filter = where("owner", "==", user.uid);
       const result = await queryDocuments("tasks", filter);
-      console.log(result);
       setUserObjects(result);
     };
 
@@ -35,7 +34,8 @@ function UserTask() {
     <div className="UserTask">
       <h1>My Task</h1>
 
-      <DisplayRow data={userObjects} userObjects={userObjects} setUserObjects={setUserObjects} />
+      <Dashboard tasks={userObjects} setUserObjects={setUserObjects}/>
+      {/* <DisplayRow data={userObjects} userObjects={userObjects} setUserObjects={setUserObjects} /> */}
       {/* <h1>Completed Task</h1>
       <DisplayRow data={completedObjects} /> */}
     </div>

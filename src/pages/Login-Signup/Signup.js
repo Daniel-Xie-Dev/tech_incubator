@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
-import { useStore } from "../../StoreProvider";
+// import { useStore } from "../../StoreProvider";
 import { motion } from "framer-motion";
 import "./Login.css";
 
@@ -11,7 +11,7 @@ function Signup() {
   const [showPass, setShowPass] = useState(false);
 
   const { signup } = useAPI();
-  const { setUser, setCurrentTask, setCompletedTask } = useStore();
+  // const { setUser, setCurrentTask, setCompletedTask } = useStore();
 
   const navigate = useNavigate();
 

@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useStore } from "../../StoreProvider";
 import { where } from "firebase/firestore/lite";
 import { useNavigate } from "react-router-dom";
-import DisplayRow from "../Dashboard/DisplayRow";
 import useAPI from "../../hooks/useAPI";
+import Dashboard from "../Dashboard/Dashboard";
 
 function UnfinishedTask() {
   const [currentObjects, setCurrentObjects] = useState([]);
@@ -32,10 +32,11 @@ function UnfinishedTask() {
     // getCompletedTasks();
   }, [currentTask]);
 
+  console.log(currentObjects)
   return (
     <div className="UnfinishedTask">
       <h1 className="UnfinishedTask_Header">Unfinished Task</h1>
-      <DisplayRow data={currentObjects} />
+      <Dashboard tasks={currentObjects}/>
     </div>
   );
 }
