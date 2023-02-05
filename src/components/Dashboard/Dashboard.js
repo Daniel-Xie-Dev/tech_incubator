@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 
 import DisplayRow from "./DisplayRow";
 
+
 function Dashboard({tasks, setUserObjects}) {
 
 
   return (
+
     <div className="Dashboard">
+  
       {tasks?.map((_, index) => {
         if (index % 2 === 0) {
           return (

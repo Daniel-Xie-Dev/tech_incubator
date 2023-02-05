@@ -110,8 +110,8 @@ const useAPI = () => {
       await updateDoc(doc(db, collectionName, documentName), {
         [fieldName]: isAdd ? arrayUnion(data) : arrayRemove(data),
       });
-    } catch (eror) {
-      console.log("error");
+    } catch (error) {
+      console.log(error);
     }
   };
 

@@ -6,7 +6,7 @@ import useAPI from "../../hooks/useAPI";
 import Task from "../Task/Task";
 
 function DisplayRow({ data, setUserObjects }) {
-  const { user, currentTask, setCurrentTask } = useStore();
+  const { user, currentTask, setCurrentTask, completedTask } = useStore();
   const { updateDocumentFieldArray, deleteDocumentFromCollection } = useAPI();
   const uid = user.uid;
 
@@ -21,6 +21,9 @@ function DisplayRow({ data, setUserObjects }) {
       ownerSet.add(item.id);
     }
   });
+
+  const completedSet = new Set();
+  // console.log(completedTask)
 
   // console.log(ownerSet);
 

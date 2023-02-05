@@ -2,30 +2,35 @@ import "./CreateTask.css";
 import React, { useState } from "react";
 import useAPI from "../../hooks/useAPI";
 import { useStore } from "../../StoreProvider";
+import { db } from "../../firebase";
+import { Timestamp } from "firebase/firestore/lite";
+
 
 function CreateTask() {
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [img, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState();
-  const [time, setTime] = useState();
+  const [dateTime, setDateTime] = useState();
 
   const { user } = useStore();
   // console.log(user);
   const { createDocumentInCollectionWithData } = useAPI();
 
+
+
   const createTask = async () => {
+    const dueDate = new Date(dateTime);
     const object = {
       title: title,
       company: null,
       img: null,
       owner: user.uid,
-      date: date,
-      time: time,
+      dateTime: Timestamp.fromDate(dueDate),
       description: description,
     };
 
+    // console.log(new Date(dateTime))
     await createDocumentInCollectionWithData("tasks", object);
     console.log(object);
     setTitle("");
@@ -55,10 +60,9 @@ function CreateTask() {
         ></textarea>
 
         <div className="CreateTask_DueDate">
-          <label className="CreateTask_Label">Pick due date</label>
-          <input type={"date"} onChange={(e) => setDate(e.target.value)}></input>
-          <label className="CreateTask_Label">Pick time of submission</label>
-          <input type={"time"} onChange={(e) => setTime(e.target.value)}></input>
+          <label className="CreateTask_Label">Pick due date & time</label>
+          <input type={"datetime-local"} onChange={(e) => setDateTime(e.target.value)}></input>
+          
         </div>
 
         <button onClick={createTask}>Create Task</button>
