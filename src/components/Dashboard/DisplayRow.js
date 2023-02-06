@@ -27,15 +27,17 @@ function DisplayRow({ data, setUserObjects }) {
 
   // console.log(ownerSet);
 
-  const addTaskToUser = async (docId) => {
+  const addTaskToUser = async (e, docId) => {
+    e.stopPropagation();
     let global = [...currentTask];
     global.push(docId);
     setCurrentTask(global);
     await updateDocumentFieldArray("users", uid, "currentTasks", docId, true);
   };
 
-  const removeFromUser = async (docId) => {
+  const removeFromUser = async (e, docId) => {
     // console.log(docId);
+    e.stopPropagation();
     let global = [...currentTask];
     let index = global.indexOf(docId);
     global.splice(index, 1);
@@ -43,7 +45,8 @@ function DisplayRow({ data, setUserObjects }) {
     await updateDocumentFieldArray("users", uid, "currentTasks", docId, false);
   };
 
-  const deleteFromUser = async (docId) => {
+  const deleteFromUser = async (e, docId) => {
+    e.stopPropagation();
     let global = data.map((item) => item.id);
     let index = global.indexOf(docId);
     global = [...data];
